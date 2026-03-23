@@ -9,6 +9,7 @@
     "start:dev": "nodemon src/index.js",
     "start:lwatch": "nodemon -L src/index.js",
     "start:debug": "nodemon --inspect src/index.js",
+    "test": "mocha",
     "docker:build:dev": "docker build --file Dockerfile-dev -t azure-storage:dev .",
     "docker:build:prod": "docker build --file Dockerfile-prod -t azure-storage:1.0.0 .",
     "docker:tag:azure": "docker tag azure-storage:1.0.0 tftshflixtube.azurecr.io/azure-storage:1.0.0",
@@ -26,6 +27,9 @@
     "express": "^5.2.1"
   },
   "devDependencies": {
-    "nodemon": "^3.1.14"
+    "chai": "^6.2.2",
+    "mocha": "^11.7.5",
+    "nodemon": "^3.1.14",
+    "supertest": "^7.2.2"
   }
 }
