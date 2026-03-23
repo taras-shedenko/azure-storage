@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: azure-storage
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: azure-storage
+  template:
+    metadata:
+      labels:
+        app: azure-storage
+    spec:
+      containers:
+      - name: azure-storage
+        image: azure-storage:1.0.0
+        imagePullPolicy: Never
+        env:
+        - name: PORT
+          value: "3001"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: azure-storage
+spec:
+  selector:
+    app: azure-storage
+  type: NodePort
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3001
+      nodePort: 30000
